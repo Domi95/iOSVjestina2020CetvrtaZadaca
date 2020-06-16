@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     let loggingService = LoggingService()
     let quizService = QuizService()
     let quizzesMenuViewController = QuizzesMenuViewController()
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,32 +25,59 @@ class LoginViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setUplogInView()
         setUpButtonsActions()
-        activateAnimation1()
+        activatePresentAnimation1()
     }
     
-    func activateAnimation1(){
+    func activatePresentAnimation1(){
         logInView.quizTitle.flash()
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.8, animations: {
             self.logInView.quizTitle.transform = CGAffineTransform(scaleX: 1.9, y: 1.9) //Scale label area
-            self.logInView.usernameTextField.transform = CGAffineTransform(translationX: 311, y: 0)
-            self.activateAnimation2()
+            self.logInView.usernameTextField.transform = CGAffineTransform(translationX: 351, y: 0)
+            self.activatePresentAnimation2()
             })
     }
     
-    func activateAnimation2(){
-        UIView.animate(withDuration: 0.7,delay: 0.3,  animations: {
+    func activatePresentAnimation2(){
+        UIView.animate(withDuration: 0.6,delay: 0.2,  animations: {
             self.logInView.passwordTextField.transform =
-            self.logInView.passwordTextField.transform.translatedBy(x: 311, y: 0)
-            self.activateAnimation3()
+            self.logInView.passwordTextField.transform.translatedBy(x: 351, y: 0)
+            self.activatePresentAnimation3()
         })
     }
 
-    func activateAnimation3(){
-        UIView.animate(withDuration: 0.7, delay: 0.6, animations: {
+    func activatePresentAnimation3(){
+        UIView.animate(withDuration: 0.6, delay: 0.4, animations: {
                self.logInView.logInButton.transform =
-               self.logInView.logInButton.transform.translatedBy(x: 311, y: 0)
+               self.logInView.logInButton.transform.translatedBy(x: 351, y: 0)
            })
        }
+    
+    func activateHideAnimation1(){
+        UIView.animate(withDuration: 0.8, animations: {
+        self.logInView.usernameTextField.transform = CGAffineTransform(translationX: 0, y: -250)
+        })
+        activateHideAnimation2()
+    }
+    
+    func activateHideAnimation2(){
+        UIView.animate(withDuration: 0.8, delay: 0.2, animations: {
+        self.logInView.passwordTextField.transform = CGAffineTransform(translationX: 0, y: -300)
+        })
+        activateHideAnimation3()
+    }
+    
+    func activateHideAnimation3(){
+        UIView.animate(withDuration: 0.8, delay: 0.4, animations: {
+        self.logInView.logInButton.transform = CGAffineTransform(translationX: 0, y: -350)
+        })
+        activateHideAnimation4()
+    }
+    
+    func activateHideAnimation4(){
+        UIView.animate(withDuration: 1, delay: 0.7, animations: {
+        self.logInView.quizTitle.transform = CGAffineTransform(translationX: 0, y: -200)
+        })
+    }
 
     @objc func logInPressed(){
                 let defaults = UserDefaults.standard
@@ -63,12 +91,18 @@ class LoginViewController: UIViewController {
                 loggingService.makeURLRequest(username: username, password: password, completion: { (status) in
                     DispatchQueue.main.async {
                         if status == true {
-                            self.navigationController?.pushViewController(self.quizzesMenuViewController, animated: true)
+                            self.logInView.errorLabel.isHidden = true
+                            self.activateHideAnimation1()
+                            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(self.nextViewController), userInfo:nil, repeats: false)
                         } else {
-                            print("ne otvaram ekran")
+                            self.logInView.errorLabel.isHidden = false
                         }
                     }
                 })
+    }
+    
+    @objc func nextViewController(){
+        self.navigationController?.pushViewController(self.quizzesMenuViewController, animated: true)
     }
     
     func isUserLogedIn(){

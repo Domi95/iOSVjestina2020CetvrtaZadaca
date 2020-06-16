@@ -25,7 +25,7 @@ class LoggingService {
     
     func returnLogedInUsername() -> String? {
         let defaults = UserDefaults.standard
-        guard let username = defaults.string(forKey: "Id") else {
+        guard let username = defaults.string(forKey: "Username") else {
             return "Username"
         }
         return username

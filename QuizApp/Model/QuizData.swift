@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 struct QuizData: Decodable {
     var quizzes: [Quiz]
@@ -35,4 +36,10 @@ struct QuizzesByCategory {
 enum Category: String, Decodable, CaseIterable {
     case SPORTS, SCIENCE
 }
+
+struct AnswerInformation {
+    var color: UIColor
+    var buttonId: Int
+}
+
 

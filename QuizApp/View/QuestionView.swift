@@ -15,6 +15,7 @@ class QuestionView: UIView {
     let buttonB = UIButton()
     let buttonC = UIButton()
     let buttonD = UIButton()
+    var buttons = [UIButton]()
     
     let progressLabel1 = UILabel()
     
@@ -72,6 +73,11 @@ class QuestionView: UIView {
         buttonD.backgroundColor = .gray
         buttonD.layer.cornerRadius = 20
         buttonD.layer.borderWidth = 1
+        
+        buttons.append(buttonA)
+        buttons.append(buttonB)
+        buttons.append(buttonC)
+        buttons.append(buttonD)
     }
     
     private func setUpConstraints(){

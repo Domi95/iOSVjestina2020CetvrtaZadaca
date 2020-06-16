@@ -14,6 +14,7 @@ class LoginView : UIView {
     let passwordTextField = UITextField()
     let logInButton = UIButton()
     let quizTitle = UILabel()
+    let errorLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +33,6 @@ class LoginView : UIView {
         usernameTextField.clipsToBounds = true
         usernameTextField.placeholder = "Username"
         usernameTextField.backgroundColor = .darkGray
-        usernameTextField.text = "username"
         
         self.addSubview(passwordTextField)
         passwordTextField.layer.cornerRadius = 20
@@ -40,7 +40,6 @@ class LoginView : UIView {
         passwordTextField.placeholder = "Password"
         passwordTextField.backgroundColor = .darkGray
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.text = "password"
 
         self.addSubview(logInButton)
         logInButton.layer.cornerRadius = 20
@@ -58,6 +57,18 @@ class LoginView : UIView {
         quizTitle.text = "PopQuiz"
         quizTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 32.0)
         quizTitle.textColor = UIColor.white
+        
+        self.addSubview(errorLabel)
+        errorLabel.layer.cornerRadius = 20
+        errorLabel.clipsToBounds = true
+        errorLabel.backgroundColor = .systemRed
+        errorLabel.numberOfLines = 0
+        errorLabel.minimumScaleFactor = 0.5
+        errorLabel.textAlignment = .center
+        errorLabel.text = "Wrong username or password"
+        errorLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 22.0)
+        errorLabel.textColor = UIColor.white
+        errorLabel.isHidden = true
     }
     
     func setUpConstraints(){
@@ -70,22 +81,30 @@ class LoginView : UIView {
         quizTitle.adjustsFontSizeToFitWidth = true
         
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-        usernameTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        usernameTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -351).isActive = true
         usernameTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
         usernameTextField.widthAnchor.constraint(equalToConstant: 311).isActive = true
         usernameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -351).isActive = true
         passwordTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50).isActive = true
         passwordTextField.widthAnchor.constraint(equalToConstant: 311).isActive = true
         passwordTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         logInButton.translatesAutoresizingMaskIntoConstraints = false
-        logInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        logInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -351).isActive = true
         logInButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
         logInButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
         logInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        errorLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100).isActive = true
+        errorLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        errorLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    
+        
         
     }
     

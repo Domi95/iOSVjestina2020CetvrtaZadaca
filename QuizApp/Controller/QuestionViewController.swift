@@ -16,7 +16,6 @@ class QuestionViewController: UIViewController {
     let leaderboardButton = UIButton()
     var quizz: Quiz!
     var currentQuestion = 0
-    var timer = Timer()
     var correctAnswersCounter = 0
     var startTime = NSDate()
     var leaderboardViewController = LeaderboardViewController()
@@ -57,56 +56,24 @@ class QuestionViewController: UIViewController {
         currentQuestion += 1
         currentQuestionLabel.text = "\(currentQuestion+1)/\(quizz.questions.count)"
         if currentQuestion == 10 {
-            print("current question == 10")
             quizEnded()
             return
         }
-        if sender.tag == quizz.questions[currentQuestion].correctAnswer {
-            correctAnswerPressed(buttonsId: sender.tag)
+        if sender.tag == quizz.questions[currentQuestion-1].correctAnswer {
+            let answerInformation = AnswerInformation(color: .systemGreen, buttonId: sender.tag)
+            changeColorsAfterAnswerClick(answerInformation: answerInformation)
         }
         else {
-            incorrectAnswerPressed(buttonsId: sender.tag)
+            let answerInformation = AnswerInformation(color: .systemRed, buttonId: sender.tag)
+            changeColorsAfterAnswerClick(answerInformation: answerInformation)
         }
     }
     
-    func correctAnswerPressed(buttonsId: Int){
-        progressLabels[currentQuestion-1].backgroundColor = .green
-        timer.invalidate()
+    func changeColorsAfterAnswerClick(answerInformation: AnswerInformation){
+        progressLabels[currentQuestion-1].backgroundColor = answerInformation.color
         correctAnswersCounter += 1
-        switch buttonsId {
-        case 0:
-            questionViews[currentQuestion-1].buttonA.backgroundColor = .green
-        case 1:
-            questionViews[currentQuestion-1].buttonB.backgroundColor = .green
-        case 2:
-            questionViews[currentQuestion-1].buttonC.backgroundColor = .green
-        case 3:
-            questionViews[currentQuestion-1].buttonD.backgroundColor = .green
-        default:
-            print("Error after buttons backgroundcolor change")
-        }
-        self.scrollToPage(page: currentQuestion, animated: true)
-        if (currentQuestion == 10)
-        {
-            quizEnded()
-            return
-        }
-    }
-    
-    func incorrectAnswerPressed(buttonsId: Int){
-        progressLabels[currentQuestion-1].backgroundColor = .red
-        switch buttonsId {
-        case 0:
-            questionViews[currentQuestion-1].buttonA.backgroundColor = .red
-        case 1:
-            questionViews[currentQuestion-1].buttonB.backgroundColor = .red
-        case 2:
-            questionViews[currentQuestion-1].buttonC.backgroundColor = .red
-        case 3:
-            questionViews[currentQuestion-1].buttonD.backgroundColor = .red
-        default:
-            print("Error after buttons backgroundcolor change")
-        }
+        questionViews[currentQuestion-1].buttons[answerInformation.buttonId].backgroundColor = answerInformation.color
+       
         self.scrollToPage(page: currentQuestion, animated: true)
         if (currentQuestion == 10)
         {
