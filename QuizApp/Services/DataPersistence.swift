@@ -36,7 +36,7 @@ class DataPersistence {
                     let questionCoreData = QuestionCoreData(context: self.context)
                     questionCoreData.question = question.question
                     questionCoreData.id = Int16(question.id)
-                    questionCoreData.correct_answer = Int16(question.correct_answer)
+                    questionCoreData.correct_answer = Int16(question.correctAnswer)
                     questionCoreData.answers = question.answers
                     quizCoreData.questions?.adding(questionCoreData)
                     questionCoreData.parentQuiz = quizCoreData
@@ -104,7 +104,7 @@ class DataPersistence {
         for object in searchedQuizArrayNotParsed {
             var questionArray : [Question] = []
             for loopQuestion in object.questions?.allObjects as! [QuestionCoreData] {
-                let question = Question(id: Int(loopQuestion.id), question: loopQuestion.question!, answers: loopQuestion.answers!, correct_answer: Int(loopQuestion.correct_answer))
+                let question = Question(id: Int(loopQuestion.id), question: loopQuestion.question!, answers: loopQuestion.answers!, correctAnswer: Int(loopQuestion.correct_answer))
                 questionArray.append(question)
             }
             let quiz = Quiz(category: Category(rawValue: object.category!) ?? Category.SPORTS, title: object.title!, image: object.image!, questions: questionArray, level: Int(object.level), description: object.quizDescription!, id: Int(object.id))
@@ -118,14 +118,13 @@ class DataPersistence {
             for object in quizzesFromCoreDataNotParsed {
                 var questionArray : [Question] = []
                 for loopQuestion in object.questions?.allObjects as! [QuestionCoreData] {
-                    let question = Question(id: Int(loopQuestion.id), question: loopQuestion.question!, answers: loopQuestion.answers!, correct_answer: Int(loopQuestion.correct_answer))
+                    let question = Question(id: Int(loopQuestion.id), question: loopQuestion.question!, answers: loopQuestion.answers!, correctAnswer: Int(loopQuestion.correct_answer))
                     questionArray.append(question)
                 }
                 let quiz = Quiz(category: Category(rawValue: object.category!) ?? Category.SPORTS, title: object.title!, image: object.image!, questions: questionArray, level: Int(object.level), description: object.quizDescription!, id: Int(object.id))
                 quizzesFromCoreDataParsed.append(quiz)
             }
             completion(quizzesFromCoreDataParsed)
-            //return quizzesFromCoreDataParsed
         }
     
     func saveItems(){

@@ -61,7 +61,7 @@ class QuestionViewController: UIViewController {
             quizEnded()
             return
         }
-        if sender.tag == quizz.questions[currentQuestion].correct_answer {
+        if sender.tag == quizz.questions[currentQuestion].correctAnswer {
             correctAnswerPressed(buttonsId: sender.tag)
         }
         else {

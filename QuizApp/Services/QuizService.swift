@@ -62,7 +62,10 @@ struct QuizService {
         }
         
         var request = URLRequest(url: url)
-        let token = defaults.object(forKey: "Token")
+        guard let token = defaults.object(forKey: "Token") else {
+            print("Token not found")
+            return
+        }
         
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -80,7 +83,6 @@ struct QuizService {
             }
         }
         task.resume()
-        
     }
     
     func parseJSON(_ quizData: Data) -> QuizData? {

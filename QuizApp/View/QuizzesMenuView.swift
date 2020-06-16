@@ -77,7 +77,6 @@ class QuizzesMenuView: UIView {
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         tableView.isHidden = true
-        
     }
     
     func setUpErrorLabel(){

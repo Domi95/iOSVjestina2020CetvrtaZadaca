@@ -1,7 +1,7 @@
 import Foundation
 
 struct QuizData: Decodable {
-    var quizzes : [Quiz]
+    var quizzes: [Quiz]
 }
 
 struct Quiz: Decodable {
@@ -15,10 +15,16 @@ struct Quiz: Decodable {
 }
 
 struct Question: Decodable {
+    enum CodingKeys: String, CodingKey{
+        case id = "id"
+        case question = "question"
+        case answers = "answers"
+        case correctAnswer = "correct_answer"
+    }
    var id: Int
    var question: String
    var answers: [String]
-   var correct_answer: Int
+   var correctAnswer: Int
 }
 
 struct QuizzesByCategory {

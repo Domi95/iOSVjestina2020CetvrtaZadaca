@@ -15,15 +15,9 @@ class LoginView : UIView {
     let logInButton = UIButton()
     let quizTitle = UILabel()
     
-    var rightAnchorConstraint: NSLayoutConstraint?
-    var leftAnchorConstraint: NSLayoutConstraint?
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         render()
-        
-
     }
     
     private func render() {
@@ -74,27 +68,7 @@ class LoginView : UIView {
         quizTitle.heightAnchor.constraint(equalToConstant: 20).isActive = true
         quizTitle.numberOfLines = 0
         quizTitle.adjustsFontSizeToFitWidth = true
-        
-       //usernameTextField.translatesAutoresizingMaskIntoConstraints = false
-       // usernameTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50).isActive = true
-//        usernameTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-//        usernameTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-//        usernameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-//        usernameTextField.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        
-//        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-//        passwordTextField.topAnchor.constraint(equalTo: self.usernameTextField.bottomAnchor, constant: 13).isActive = true
-//        passwordTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-//        passwordTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-//        passwordTextField.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
-//        logInButton.translatesAutoresizingMaskIntoConstraints = false
-//        logInButton.topAnchor.constraint(equalTo: self.passwordTextField.bottomAnchor, constant: 13).isActive = true
-//        logInButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-//        logInButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-//        logInButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
-    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
