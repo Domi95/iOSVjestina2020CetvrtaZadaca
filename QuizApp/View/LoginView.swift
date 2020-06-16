@@ -68,6 +68,25 @@ class LoginView : UIView {
         quizTitle.heightAnchor.constraint(equalToConstant: 20).isActive = true
         quizTitle.numberOfLines = 0
         quizTitle.adjustsFontSizeToFitWidth = true
+        
+        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
+        usernameTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        usernameTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
+        usernameTextField.widthAnchor.constraint(equalToConstant: 311).isActive = true
+        usernameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        passwordTextField.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -50).isActive = true
+        passwordTextField.widthAnchor.constraint(equalToConstant: 311).isActive = true
+        passwordTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        logInButton.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -311).isActive = true
+        logInButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0).isActive = true
+        logInButton.widthAnchor.constraint(equalToConstant: 311).isActive = true
+        logInButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
     }
     
     required init?(coder: NSCoder) {

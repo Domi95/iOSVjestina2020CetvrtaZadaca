@@ -18,31 +18,39 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isUserLogedIn()
-        setUpAnimation()
     }
     
     func render(){
         self.navigationController?.isNavigationBarHidden = true
         setUplogInView()
         setUpButtonsActions()
-        setUpAnimation()
+        activateAnimation1()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
-    
-    func setUpAnimation(){
+    func activateAnimation1(){
         logInView.quizTitle.flash()
-        UIView.animate(withDuration: 2.7) {
+        UIView.animate(withDuration: 1, animations: {
             self.logInView.quizTitle.transform = CGAffineTransform(scaleX: 1.9, y: 1.9) //Scale label area
-            self.logInView.usernameTextField.frame = CGRect(x: 13, y: 200, width: 311, height: 44)
-            self.logInView.passwordTextField.frame = CGRect(x: 13, y: 256, width: 311, height: 44)
-            self.logInView.logInButton.frame = CGRect(x: 13, y: 312, width: 311, height: 44)
-        }
+            self.logInView.usernameTextField.transform = CGAffineTransform(translationX: 311, y: 0)
+            self.activateAnimation2()
+            })
     }
     
-    
+    func activateAnimation2(){
+        UIView.animate(withDuration: 0.7,delay: 0.3,  animations: {
+            self.logInView.passwordTextField.transform =
+            self.logInView.passwordTextField.transform.translatedBy(x: 311, y: 0)
+            self.activateAnimation3()
+        })
+    }
+
+    func activateAnimation3(){
+        UIView.animate(withDuration: 0.7, delay: 0.6, animations: {
+               self.logInView.logInButton.transform =
+               self.logInView.logInButton.transform.translatedBy(x: 311, y: 0)
+           })
+       }
+
     @objc func logInPressed(){
                 let defaults = UserDefaults.standard
                 defaults.set(logInView.usernameTextField.text, forKey: "Username")
@@ -89,7 +97,7 @@ class LoginViewController: UIViewController {
 extension UILabel {
     func flash(){
         let flash = CABasicAnimation(keyPath: "opacity")
-        flash.duration = 5
+        flash.duration = 3
         flash.fromValue = 0.1
         flash.toValue = 1
         flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
