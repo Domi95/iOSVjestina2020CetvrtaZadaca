@@ -23,7 +23,7 @@ class QuizzesMenuViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         self.navigationController?.isNavigationBarHidden = true
         quizzesMenuView.tableView.dataSource = self

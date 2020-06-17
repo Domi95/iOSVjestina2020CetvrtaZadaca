@@ -24,6 +24,7 @@ class LoginView : UIView {
     private func render() {
         setUpElements()
         setUpConstraints()
+        self.backgroundColor = .black
     }
     
     func setUpElements(){

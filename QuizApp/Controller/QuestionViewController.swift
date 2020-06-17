@@ -31,6 +31,14 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .black
         render()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
     
     func render(){
