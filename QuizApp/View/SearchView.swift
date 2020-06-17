@@ -44,24 +44,23 @@ class SearchView: UIView {
     }
     
     func setUpConstraints(){
-       searchTextField.translatesAutoresizingMaskIntoConstraints = false
-       searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 68).isActive = true
-       searchTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 21).isActive = true
-       searchTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-       searchTextField.widthAnchor.constraint(equalToConstant: 265).isActive = true
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        searchTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 68).isActive = true
+        searchTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 21).isActive = true
+        searchTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        searchTextField.widthAnchor.constraint(equalToConstant: 265).isActive = true
         
-       searchButton.translatesAutoresizingMaskIntoConstraints = false
-       searchButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 79).isActive = true
-       searchButton.leftAnchor.constraint(equalTo: searchTextField.rightAnchor, constant: 20).isActive = true
-       searchButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
-       searchButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 79).isActive = true
+        searchButton.leftAnchor.constraint(equalTo: searchTextField.rightAnchor, constant: 20).isActive = true
+        searchButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
+        searchButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
-      
-       tableView.translatesAutoresizingMaskIntoConstraints = false
-       tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 81).isActive = true
-       tableView.leftAnchor.constraint(equalTo: searchTextField.leftAnchor).isActive = true
-       tableView.rightAnchor.constraint(equalTo: searchButton.rightAnchor).isActive = true
-       tableView.heightAnchor.constraint(equalToConstant: 370).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 81).isActive = true
+        tableView.leftAnchor.constraint(equalTo: searchTextField.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: searchButton.rightAnchor).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 370).isActive = true
     }
     
     required init?(coder: NSCoder) {

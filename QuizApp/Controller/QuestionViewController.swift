@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController {
     var leaderboardViewController = LeaderboardViewController()
     var progressLabels = [UILabel]()
     let currentQuestionLabel = UILabel()
+    let underscoreLabel = UILabel()
     
     private var scrollView = UIScrollView(frame: .zero)
     private var stackView = UIStackView(frame: .zero)
@@ -90,6 +91,7 @@ class QuestionViewController: UIViewController {
         setUpQuestionView()
         setUpQuestionViewsButtonsAction()
         leaderboardButton.isHidden = true
+        underscoreLabel.isHidden = true
         unhideProgressLabels()
     }
     
@@ -97,7 +99,6 @@ class QuestionViewController: UIViewController {
         self.navigationController?.pushViewController(leaderboardViewController, animated: true)
         leaderboardViewController.showLeaderboardData(quizzId: quizz.id)
     }
-    
     
     func setUpButtonsActions(){
         startQuizView.startQuizButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
@@ -131,6 +132,14 @@ class QuestionViewController: UIViewController {
         leaderboardButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         leaderboardButton.heightAnchor.constraint(equalToConstant: 27).isActive = true
         leaderboardButton.widthAnchor.constraint(equalToConstant: 102).isActive = true
+        
+        view.addSubview(underscoreLabel)
+        underscoreLabel.translatesAutoresizingMaskIntoConstraints = false
+        underscoreLabel.topAnchor.constraint(equalTo: leaderboardButton.bottomAnchor, constant: 0).isActive = true
+        underscoreLabel.rightAnchor.constraint(equalTo: leaderboardButton.rightAnchor, constant: 0).isActive = true
+        underscoreLabel.leftAnchor.constraint(equalTo: leaderboardButton.leftAnchor, constant: 0).isActive = true
+        underscoreLabel.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        underscoreLabel.backgroundColor = .white
     }
     
     func setNavigationBar(){

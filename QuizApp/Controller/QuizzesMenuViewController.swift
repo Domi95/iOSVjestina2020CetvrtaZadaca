@@ -39,28 +39,18 @@ class QuizzesMenuViewController: UIViewController {
     }
     
     func updateCoreDataQuizzes(){
-        
         quizService.fetchQuiz(with: "https://iosquiz.herokuapp.com/api/quizzes", completion: { (quizData) in
-            
             self.dataPersistence.fillQuizzesFromAPI(quizzes: quizData)
-            
             self.dataPersistence.fillNewQuizzesFromAPI()
-            
             self.dataPersistence.updateQuizzesFromCoreDataNotParsed()
-            
             self.getQuizzesWithCoreData()
-            
         })
     }
     
     func getQuizzesWithCoreData(){
-        
         dataPersistence.loadItemsFromCoreData()
-        
         dataPersistence.parseQuizesFromCoreData(completion: { (quizzes) in
-            
-        updateQuizData(quizzes: quizzes)
-            
+            updateQuizData(quizzes: quizzes)
         })
     }
     
@@ -78,10 +68,10 @@ class QuizzesMenuViewController: UIViewController {
     }
     
     func findStringNBA(quizzesByCategory: [QuizzesByCategory]){
-            var questionArray: [String] = []
-            if quizzesByCategory.count == 0  {
-                return
-            }
+        var questionArray: [String] = []
+        if quizzesByCategory.count == 0  {
+            return
+        }
         for quizByCategory in quizzesByCategory {
             for quiz in quizByCategory.quizzes {
                 for question in quiz.questions {
@@ -89,9 +79,9 @@ class QuizzesMenuViewController: UIViewController {
                 }
             }
         }
-            let containsNbaString = questionArray.filter({$0.contains("NBA")})
-            quizzesMenuView.funFactLabel.text = "Postoje \(containsNbaString.count) pitanja koja u sebi sadrze rijec 'NBA'"
-        }
+        let containsNbaString = questionArray.filter({$0.contains("NBA")})
+        quizzesMenuView.funFactLabel.text = "Postoje \(containsNbaString.count) pitanja koja u sebi sadrze rijec 'NBA'"
+    }
     
     @objc func getQuizPressed(){
         checkConnection()
@@ -100,9 +90,7 @@ class QuizzesMenuViewController: UIViewController {
     }
     
     func checkConnection(){
-        
         let reachability = try! Reachability()
-
         reachability.whenReachable = { reachability in
             if reachability.connection == .wifi {
                 print("Reachable via WiFi")
@@ -125,7 +113,6 @@ class QuizzesMenuViewController: UIViewController {
     
     func updateQuizImage(imageString: String) -> UIImage{
         if let url = URL(string: imageString){
-            
             do {
                 let data = try Data(contentsOf: url)
                 return UIImage(data: data)!
@@ -135,7 +122,6 @@ class QuizzesMenuViewController: UIViewController {
         }
         return UIImage()
     }
-    
     
     func setUpQuizInformationView(){
         view.addSubview(quizzesMenuView)
@@ -193,28 +179,26 @@ extension QuizzesMenuViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         
         var color: UIColor
-        
         if indexPath.section == 0 {
             color = .systemBlue
         } else {
             color = .brown
         }
-            switch quizzesByCategory[indexPath.section].quizzes[indexPath.row].level {
-            case 1 :
-                cell.imageLevel1.tintColor = color
-            case 2:
-                cell.imageLevel1.tintColor = color
-                cell.imageLevel2.tintColor = color
-            case 3:
-                cell.imageLevel1.tintColor = color
-                cell.imageLevel2.tintColor = color
-                cell.imageLevel3.tintColor = color
-            default: cell.imageLevel1.tintColor = .lightGray
-            cell.imageLevel2.tintColor = .lightGray
-            cell.imageLevel3.tintColor = .lightGray
-            }
-            return cell
-          
+        switch quizzesByCategory[indexPath.section].quizzes[indexPath.row].level {
+        case 1 :
+            cell.imageLevel1.tintColor = color
+        case 2:
+            cell.imageLevel1.tintColor = color
+            cell.imageLevel2.tintColor = color
+        case 3:
+            cell.imageLevel1.tintColor = color
+            cell.imageLevel2.tintColor = color
+            cell.imageLevel3.tintColor = color
+        default: cell.imageLevel1.tintColor = .lightGray
+        cell.imageLevel2.tintColor = .lightGray
+        cell.imageLevel3.tintColor = .lightGray
+        }
+        return cell
     }
 }
 

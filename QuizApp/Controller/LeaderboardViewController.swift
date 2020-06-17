@@ -78,7 +78,6 @@ extension LeaderboardViewController: UITableViewDataSource {
         return top20Players.count
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.leaderboardView.tableView.dequeueReusableCell(withIdentifier: "PlayerReusableCell", for: indexPath) as! PlayerCell
         cell.placeNumber.text = String("\(indexPath.row + 1).")

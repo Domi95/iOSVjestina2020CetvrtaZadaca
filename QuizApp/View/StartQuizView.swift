@@ -15,6 +15,7 @@ class StartQuizView: UIView {
     let startQuizButton = UIButton()
     let quizDescription = UILabel()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         render()

@@ -60,7 +60,6 @@ class SearchViewController: UIViewController {
     
     func updateQuizImage(imageString: String) -> UIImage{
         if let url = URL(string: imageString){
-            
             do {
                 let data = try Data(contentsOf: url)
                 return UIImage(data: data)!
@@ -118,7 +117,6 @@ extension SearchViewController: UITableViewDataSource {
         cell.imageLevel3.tintColor = .lightGray
         }
         return cell
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -131,9 +129,12 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionLabel = UILabel()
+        if quizzesByCategory[section].category.rawValue == "SPORTS" {
+            sectionLabel.textColor = .systemBlue
+        } else {
+            sectionLabel.textColor = .brown
+        }
         sectionLabel.text = quizzesByCategory[section].category.rawValue
-        sectionLabel.backgroundColor = .black
-        sectionLabel.textColor = .white
         sectionLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         return sectionLabel
     }
