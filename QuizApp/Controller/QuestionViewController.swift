@@ -94,8 +94,8 @@ class QuestionViewController: UIViewController {
     }
     
     @objc func leaderboardPressed() {
-        leaderboardViewController.showLeaderboardData(quizzId: quizz.id)
         self.navigationController?.pushViewController(leaderboardViewController, animated: true)
+        leaderboardViewController.showLeaderboardData(quizzId: quizz.id)
     }
     
     

@@ -45,7 +45,7 @@ class StartQuizView: UIView {
         quizImage.bottomAnchor.constraint(equalTo: startQuizButton.topAnchor, constant: -20).isActive = true
         quizImage.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
         quizImage.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        quizImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        quizImage.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
         startQuizButton.translatesAutoresizingMaskIntoConstraints = false
         startQuizButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -26).isActive = true
@@ -78,7 +78,6 @@ class StartQuizView: UIView {
         
         quizImage.layer.cornerRadius = 20
         quizImage.layer.masksToBounds = true
-        
     }
     
     required init?(coder: NSCoder) {

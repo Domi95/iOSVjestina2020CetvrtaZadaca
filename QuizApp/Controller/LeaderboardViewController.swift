@@ -13,6 +13,7 @@ class LeaderboardViewController: UIViewController {
     var leaderboardView = LeaderboardView()
     let quizService = QuizService()
     var top20Players: [QuizBestPlayerData] = []
+    var quizzId: Quiz!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,13 @@ class LeaderboardViewController: UIViewController {
         setUpButtonsActions()
     }
     func showLeaderboardData(quizzId: Int) {
-        
             quizService.getQuizLeaderboard(quizzId: quizzId, completion: { (quizData) in
                 self.removePeopleWhoAreNotInTop20(quizPlayers: quizData)
+                DispatchQueue.main.async{
+                 self.leaderboardView.tableView.reloadData()
+                }
         })
-        
-        self.leaderboardView.tableView.reloadData()
     }
-
     
     func showPopMessage(){
         leaderboardView.popMessage.isHidden = false

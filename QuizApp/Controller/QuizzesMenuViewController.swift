@@ -136,6 +136,7 @@ class QuizzesMenuViewController: UIViewController {
         return UIImage()
     }
     
+    
     func setUpQuizInformationView(){
         view.addSubview(quizzesMenuView)
         quizzesMenuView.translatesAutoresizingMaskIntoConstraints = false

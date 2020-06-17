@@ -16,7 +16,6 @@ class QuestionView: UIView {
     let buttonC = UIButton()
     let buttonD = UIButton()
     var buttons = [UIButton]()
-    
     let progressLabel1 = UILabel()
     
     override init(frame: CGRect) {

@@ -53,29 +53,30 @@ class LoginViewController: UIViewController {
        }
     
     func activateHideAnimation1(){
-        UIView.animate(withDuration: 0.8, animations: {
-        self.logInView.usernameTextField.transform = CGAffineTransform(translationX: 0, y: -250)
+        UIView.animate(withDuration: 0.6, animations: {
+            self.logInView.quizTitle.transform = CGAffineTransform(translationX: 0, y: -200)
         })
         activateHideAnimation2()
-    }
+        }
     
     func activateHideAnimation2(){
-        UIView.animate(withDuration: 0.8, delay: 0.2, animations: {
-        self.logInView.passwordTextField.transform = CGAffineTransform(translationX: 0, y: -300)
+        UIView.animate(withDuration: 0.6, delay: 0.2, animations: {
+        self.logInView.usernameTextField.transform = self.logInView.usernameTextField.transform.translatedBy(x: 0, y: -400)
+        
         })
         activateHideAnimation3()
     }
     
     func activateHideAnimation3(){
-        UIView.animate(withDuration: 0.8, delay: 0.4, animations: {
-        self.logInView.logInButton.transform = CGAffineTransform(translationX: 0, y: -350)
+        UIView.animate(withDuration: 0.6, delay: 0.4, animations: {
+            self.logInView.passwordTextField.transform = self.logInView.passwordTextField.transform.translatedBy(x: 0, y: -450)
         })
         activateHideAnimation4()
     }
     
     func activateHideAnimation4(){
-        UIView.animate(withDuration: 1, delay: 0.7, animations: {
-        self.logInView.quizTitle.transform = CGAffineTransform(translationX: 0, y: -200)
+        UIView.animate(withDuration: 0.6, delay: 0.6, animations: {
+            self.logInView.logInButton.transform = self.logInView.logInButton.transform.translatedBy(x: 0, y: -500)
         })
     }
 
@@ -131,8 +132,8 @@ class LoginViewController: UIViewController {
 extension UILabel {
     func flash(){
         let flash = CABasicAnimation(keyPath: "opacity")
-        flash.duration = 3
-        flash.fromValue = 0.1
+        flash.duration = 2
+        flash.fromValue = 0
         flash.toValue = 1
         flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         flash.repeatCount = 1
