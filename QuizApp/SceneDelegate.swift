@@ -11,19 +11,28 @@ import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    var rootViewControllerObject = RootViewController()
-    var navigationController = UINavigationController()
+   
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-               
-        navigationController = UINavigationController(rootViewController: rootViewControllerGlobal)
-        window?.rootViewController = navigationController
+        isUserLogedIn()
         window?.makeKeyAndVisible()
     }
+    
+    func isUserLogedIn(){
+           let defaults = UserDefaults.standard
+           if defaults.object(forKey: "Token") == nil && defaults.object(forKey: "Id") == nil {
+            let logInViewController = LoginViewController(win: window!)
+               window?.rootViewController = logInViewController
+           } else {
+            let customTabBarController = CustomTabBarController(win: window!)
+                window?.rootViewController = customTabBarController
+           }
+       }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

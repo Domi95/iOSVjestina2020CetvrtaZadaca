@@ -12,12 +12,21 @@ import UIKit
 class SettingsViewController: UIViewController {
     var settingsView = SettingsView()
     let loggingService = LoggingService()
-    let loginViewController = LoginViewController()
+    var window: UIWindow? 
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
         super.viewDidLoad()
         render()
+    }
+    
+    init(win: UIWindow){
+        super.init(nibName: nil, bundle: nil)
+        window = win
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +35,9 @@ class SettingsViewController: UIViewController {
     
     @objc func logoutPressed(){
         loggingService.logOutUser()
-        rootViewControllerGlobal.setUpNavigationControllers()
+        print("log out pressed")
+        let logInViewController = LoginViewController(win: window!)
+        window?.rootViewController = logInViewController
     }
     
     private func render(){

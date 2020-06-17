@@ -22,7 +22,6 @@ class LoginView : UIView {
     }
     
     private func render() {
-        backgroundColor = .black
         setUpElements()
         setUpConstraints()
     }
@@ -105,9 +104,6 @@ class LoginView : UIView {
         errorLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100).isActive = true
         errorLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         errorLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    
-        
-        
     }
     
     required init?(coder: NSCoder) {

@@ -15,10 +15,19 @@ class LoginViewController: UIViewController {
     let quizService = QuizService()
     let quizzesMenuViewController = QuizzesMenuViewController()
     var timer = Timer()
+    var window: UIWindow?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isUserLogedIn()
+        render()
+    }
+    init(win: UIWindow){
+        super.init(nibName: nil, bundle: nil)
+        window = win
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func render(){
@@ -26,6 +35,7 @@ class LoginViewController: UIViewController {
         setUplogInView()
         setUpButtonsActions()
         activatePresentAnimation1()
+        view.backgroundColor = .black
     }
     
     func activatePresentAnimation1(){
@@ -103,20 +113,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func nextViewController(){
-        if self.navigationController?.topViewController is QuizzesMenuViewController {
-            return
-        } else {
-            self.navigationController?.pushViewController(self.quizzesMenuViewController, animated: true)
-        }
-    }
-    
-    func isUserLogedIn(){
-        let defaults = UserDefaults.standard
-        if defaults.object(forKey: "Token") == nil && defaults.object(forKey: "Id") == nil {
-            render()
-        } else {
-            self.navigationController?.pushViewController(quizzesMenuViewController, animated: true)
-        }
+        let customTabBarController = CustomTabBarController(win: window!)
+        window?.rootViewController = customTabBarController
     }
     
     func setUpButtonsActions(){

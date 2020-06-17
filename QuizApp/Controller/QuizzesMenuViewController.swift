@@ -174,7 +174,7 @@ extension QuizzesMenuViewController: UITableViewDataSource {
         let cell = self.quizzesMenuView.tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! QuizCell
         cell.quizTitle.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].title
         cell.cellQuizDescription.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].description
-        cell.cellImage?.contentMode = .scaleToFill
+        cell.cellImage?.contentMode = .scaleAspectFill
         cell.cellImage.image = self.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
         cell.selectionStyle = .none
         
