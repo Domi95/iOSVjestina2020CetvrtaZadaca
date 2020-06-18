@@ -24,7 +24,7 @@ class LoginView : UIView {
     private func render() {
         setUpElements()
         setUpConstraints()
-        self.backgroundColor = .black
+        self.backgroundColor = myColor.backgroundColor
     }
     
     func setUpElements(){
@@ -32,14 +32,14 @@ class LoginView : UIView {
         usernameTextField.layer.cornerRadius = 20
         usernameTextField.clipsToBounds = true
         usernameTextField.placeholder = "Username"
-        usernameTextField.backgroundColor = .darkGray
+        usernameTextField.backgroundColor = myColor.buttonColor1
         usernameTextField.text = "2016027"
         
         self.addSubview(passwordTextField)
         passwordTextField.layer.cornerRadius = 20
         passwordTextField.clipsToBounds = true
         passwordTextField.placeholder = "Password"
-        passwordTextField.backgroundColor = .darkGray
+        passwordTextField.backgroundColor = myColor.buttonColor1
         passwordTextField.isSecureTextEntry = true
         passwordTextField.text = "2016027"
 
@@ -47,12 +47,13 @@ class LoginView : UIView {
         logInButton.layer.cornerRadius = 20
         logInButton.clipsToBounds = true
         logInButton.setTitle("Log in", for: .normal)
-        logInButton.backgroundColor = .gray
+        logInButton.setTitleColor(.systemIndigo, for: .normal)
+        logInButton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
+        logInButton.backgroundColor = myColor.buttonColor2
         
         self.addSubview(quizTitle)
         quizTitle.layer.cornerRadius = 20
         quizTitle.clipsToBounds = true
-        quizTitle.backgroundColor = .black
         quizTitle.adjustsFontSizeToFitWidth = true
         quizTitle.minimumScaleFactor = 0.5
         quizTitle.textAlignment = .center

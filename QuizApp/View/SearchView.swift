@@ -20,7 +20,7 @@ class SearchView: UIView {
     }
     
     func render(){
-        self.backgroundColor = .black
+        self.backgroundColor = myColor.backgroundColor
         setUpElements()
         setUpConstraints()
     }
@@ -35,10 +35,10 @@ class SearchView: UIView {
         searchTextField.layer.cornerRadius = 20
         searchTextField.clipsToBounds = true
         searchTextField.placeholder = "Type here"
-        searchTextField.backgroundColor = .darkGray
+        searchTextField.backgroundColor = myColor.buttonColor1
         
         self.addSubview(tableView)
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = myColor.backgroundColor
         tableView.rowHeight = 143
         tableView.isHidden = true
     }

@@ -29,7 +29,7 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.backgroundColor = myColor.backgroundColor
         render()
         
     }
@@ -92,7 +92,6 @@ class QuestionViewController: UIViewController {
     }
     
     @objc func startButtonPressed(){
-        self.navigationController?.isNavigationBarHidden = true
         startQuizView.isHidden = true
         startTime = NSDate()
         setUpQuestionViewsData()
@@ -154,7 +153,7 @@ class QuestionViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.backItem?.title = ""
         self.navigationController?.navigationBar.topItem?.title = "PopQuiz"
-        self.navigationController?.navigationBar.barTintColor = .black
+        self.navigationController?.navigationBar.barTintColor = myColor.backgroundColor
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
@@ -175,7 +174,7 @@ class QuestionViewController: UIViewController {
     
     private func setUpQuestionView() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .black
+        scrollView.backgroundColor = myColor.backgroundColor
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled = false

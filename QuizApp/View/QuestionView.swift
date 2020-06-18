@@ -24,7 +24,7 @@ class QuestionView: UIView {
     }
     
     private func render() {
-        self.backgroundColor = .black
+        self.backgroundColor = myColor.backgroundColor
         setUpElements()
         setUpConstraints()
     }
@@ -34,7 +34,7 @@ class QuestionView: UIView {
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.minimumScaleFactor = 0.5
         questionLabel.textAlignment = .center
-        questionLabel.backgroundColor = .black
+        questionLabel.backgroundColor = myColor.backgroundColor
         questionLabel.adjustsFontSizeToFitWidth = true
         questionLabel.minimumScaleFactor = 0.5
         questionLabel.textAlignment = .center
@@ -45,33 +45,29 @@ class QuestionView: UIView {
         buttonA.setTitleColor(.black, for: .normal)
         buttonA.tag = 0
         buttonA.setTitle("", for: .normal)
-        buttonA.backgroundColor = .gray
+        buttonA.backgroundColor = myColor.buttonColor1
         buttonA.layer.cornerRadius = 20
-        buttonA.layer.borderWidth = 1
         
         self.addSubview(buttonB)
         buttonB.setTitleColor(.black, for: .normal)
         buttonB.tag = 1
         buttonB.setTitle("", for: .normal)
-        buttonB.backgroundColor = .gray
+        buttonB.backgroundColor = myColor.buttonColor1
         buttonB.layer.cornerRadius = 20
-        buttonB.layer.borderWidth = 1
         
         self.addSubview(buttonC)
         buttonC.setTitleColor(.black, for: .normal)
         buttonC.tag = 2
         buttonC.setTitle("", for: .normal)
-        buttonC.backgroundColor = .gray
+        buttonC.backgroundColor = myColor.buttonColor1
         buttonC.layer.cornerRadius = 20
-        buttonC.layer.borderWidth = 1
         
         self.addSubview(buttonD)
         buttonD.setTitleColor(.black, for: .normal)
         buttonD.tag = 3
         buttonD.setTitle("", for: .normal)
-        buttonD.backgroundColor = .gray
+        buttonD.backgroundColor = myColor.buttonColor1
         buttonD.layer.cornerRadius = 20
-        buttonD.layer.borderWidth = 1
         
         buttons.append(buttonA)
         buttons.append(buttonB)

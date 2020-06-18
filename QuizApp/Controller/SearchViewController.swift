@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     var quizzesByCategory: [QuizzesByCategory] = []
     var searchedWord = "safasmifgnodg"
     var quizzesMenuViewController = QuizzesMenuViewController()
+    let quizService = QuizService()
     
     override func viewDidLoad() {
         self.navigationController?.isNavigationBarHidden = true
@@ -58,18 +59,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func updateQuizImage(imageString: String) -> UIImage{
-        if let url = URL(string: imageString){
-            do {
-                let data = try Data(contentsOf: url)
-                return UIImage(data: data)!
-            } catch let err{
-                print("Error: \(err.localizedDescription)")
-            }
-        }
-        return UIImage()
-    }
-    
     func setUpButtonsActions(){
         searchView.searchButton.addTarget(self, action: #selector(searchButtonPressed), for: .touchUpInside)
     }
@@ -92,15 +81,15 @@ extension SearchViewController: UITableViewDataSource {
         let cell = self.searchView.tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! QuizCell
         cell.quizTitle.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].title
         cell.cellQuizDescription.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].description
-        cell.cellImage.image = self.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
+        cell.cellImage.image = quizService.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
         cell.cellImage?.contentMode = .scaleToFill
         cell.selectionStyle = .none
         var color: UIColor
         
         if indexPath.section == 0 {
-            color = .systemBlue
+            color = myColor.tableViewLevelAndSectionTitleColor1
         } else {
-            color = .brown
+            color = myColor.tableViewLevelAndSectionTitleColor2
         }
         switch quizzesByCategory[indexPath.section].quizzes[indexPath.row].level {
         case 1 :
@@ -130,9 +119,9 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionLabel = UILabel()
         if quizzesByCategory[section].category.rawValue == "SPORTS" {
-            sectionLabel.textColor = .systemBlue
+            sectionLabel.textColor = myColor.tableViewLevelAndSectionTitleColor1
         } else {
-            sectionLabel.textColor = .brown
+            sectionLabel.textColor = myColor.tableViewLevelAndSectionTitleColor2
         }
         sectionLabel.text = quizzesByCategory[section].category.rawValue
         sectionLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
@@ -149,7 +138,7 @@ extension SearchViewController: UITableViewDelegate {
         let questionViewController = QuestionViewController()
         questionViewController.startQuizView.quizTitle.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].title
         questionViewController.startQuizView.quizDescription.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].description
-        questionViewController.startQuizView.quizImage.image = self.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
+        questionViewController.startQuizView.quizImage.image = quizService.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
         self.navigationController?.pushViewController(questionViewController, animated: true)
         questionViewController.quizz = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row]
     }

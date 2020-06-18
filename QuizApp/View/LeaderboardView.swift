@@ -23,7 +23,7 @@ class LeaderboardView: UIView {
     }
     
     private func render() {
-        self.backgroundColor = .black
+        self.backgroundColor = myColor.backgroundColor
         configureTableView()
         setUpElements()
         configureConstraints()

@@ -21,6 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         render()
     }
+    
     init(win: UIWindow){
         super.init(nibName: nil, bundle: nil)
         window = win
@@ -109,9 +110,9 @@ class LoginViewController: UIViewController {
         view.addSubview(logInView)
         logInView.translatesAutoresizingMaskIntoConstraints = false
         logInView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        logInView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        logInView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        logInView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        logInView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        logInView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        logInView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
 }
 

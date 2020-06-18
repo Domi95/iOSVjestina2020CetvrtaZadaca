@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4F90F0A67E8DAA0050CBC800 /* Pods_QuizApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4959EEFDA902D09FC8384E1E /* Pods_QuizApp.framework */; };
+		C50FD686249B5FB800ECD7ED /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FD685249B5FB800ECD7ED /* MyColor.swift */; };
 		C53485D524705CCA00721AA5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53485D424705CCA00721AA5 /* SearchViewController.swift */; };
 		C53485D724705D5800721AA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53485D624705D5800721AA5 /* SettingsViewController.swift */; };
 		C53CFEF524728F4A00247C66 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53CFEF324728F4A00247C66 /* PlayerCell.swift */; };
@@ -20,7 +21,6 @@
 		C54B6BA4247EA48B00CDB2C4 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C54B6BA2247EA48B00CDB2C4 /* DataModel.xcdatamodeld */; };
 		C54CF399249A95B500A77444 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54CF398249A95B500A77444 /* CustomTabBarController.swift */; };
 		C55D599424923E000031F0E2 /* LoggingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D599324923E000031F0E2 /* LoggingService.swift */; };
-		C55D59962494CB6B0031F0E2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55D59952494CB6B0031F0E2 /* PageView.swift */; };
 		C567387F247135D200BFF5E8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567387E247135D200BFF5E8 /* LeaderboardViewController.swift */; };
 		C56738812471479700BFF5E8 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56738802471479700BFF5E8 /* LeaderboardView.swift */; };
 		C567388324719FAE00BFF5E8 /* QuizBestPlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567388224719FAE00BFF5E8 /* QuizBestPlayerData.swift */; };
@@ -44,6 +44,7 @@
 		375562E56C34F0A1955CDC75 /* Pods-QuizApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4959EEFDA902D09FC8384E1E /* Pods_QuizApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DBF35434D361D58FF44CD2 /* Pods-QuizApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizApp.release.xcconfig"; path = "Target Support Files/Pods-QuizApp/Pods-QuizApp.release.xcconfig"; sourceTree = "<group>"; };
+		C50FD685249B5FB800ECD7ED /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		C53485D424705CCA00721AA5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C53485D624705D5800721AA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C53CFEF324728F4A00247C66 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		C54B6BA3247EA48B00CDB2C4 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		C54CF398249A95B500A77444 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		C55D599324923E000031F0E2 /* LoggingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingService.swift; sourceTree = "<group>"; };
-		C55D59952494CB6B0031F0E2 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		C567387E247135D200BFF5E8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
 		C56738802471479700BFF5E8 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		C567388224719FAE00BFF5E8 /* QuizBestPlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBestPlayerData.swift; sourceTree = "<group>"; };
@@ -121,7 +121,6 @@
 				C53CFEF424728F4A00247C66 /* PlayerCell.xib */,
 				C54163392474640600103AE4 /* SettingsView.swift */,
 				C5F6C4AD248B891C00BEE25F /* SearchView.swift */,
-				C55D59952494CB6B0031F0E2 /* PageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +172,7 @@
 				C5A18F752448586B00398865 /* QuizData.swift */,
 				C5A4A4772461F321000ED66B /* ServerResponseData.swift */,
 				C567388224719FAE00BFF5E8 /* QuizBestPlayerData.swift */,
+				C50FD685249B5FB800ECD7ED /* MyColor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,7 +332,6 @@
 				C5F6C4AE248B891C00BEE25F /* SearchView.swift in Sources */,
 				C54B6BA4247EA48B00CDB2C4 /* DataModel.xcdatamodeld in Sources */,
 				C547D51824629E4E00F34888 /* QuizzesMenuViewController.swift in Sources */,
-				C55D59962494CB6B0031F0E2 /* PageView.swift in Sources */,
 				C567388324719FAE00BFF5E8 /* QuizBestPlayerData.swift in Sources */,
 				C541633A2474640600103AE4 /* SettingsView.swift in Sources */,
 				C5A18F762448586B00398865 /* QuizData.swift in Sources */,
@@ -343,6 +342,7 @@
 				C5F5E634246559FB00CF481C /* QuestionViewController.swift in Sources */,
 				C56738812471479700BFF5E8 /* LeaderboardView.swift in Sources */,
 				C53485D724705D5800721AA5 /* SettingsViewController.swift in Sources */,
+				C50FD686249B5FB800ECD7ED /* MyColor.swift in Sources */,
 				C53485D524705CCA00721AA5 /* SearchViewController.swift in Sources */,
 				C547D51B2462BB0400F34888 /* QuizCell.swift in Sources */,
 				C55D599424923E000031F0E2 /* LoggingService.swift in Sources */,

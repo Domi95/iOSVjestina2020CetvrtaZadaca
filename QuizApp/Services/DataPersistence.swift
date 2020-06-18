@@ -46,39 +46,27 @@ class DataPersistence {
         }
     
     func updateQuizzesFromCoreDataNotParsed(){
-        
         parseIntoCoreDataForm(quizData: newQuizzesFromAPI)
-        
     }
     
     func fillNewQuizzesFromAPI(){
-        
         newQuizzesFromAPI = []
-        
         for quizFromAPI in quizzesFromAPI {
-            
             var quizExists = true
-            
             for quizzFromCoreData in quizzesFromCoreDataParsed {
-            
                 if quizFromAPI.title == quizzFromCoreData.title {
-                    
                     quizExists = false
                 }
             }
             if quizExists == true {
-                
                 newQuizzesFromAPI.append(quizFromAPI)
         }
     }
 }
     
     func fillQuizzesFromAPI(quizzes: [Quiz]){
-        
         quizzesFromAPI = []
-        
         quizzesFromAPI = quizzes
-        
     }
     
     func loadItemsFromCoreData(){

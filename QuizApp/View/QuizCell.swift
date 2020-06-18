@@ -21,7 +21,7 @@ class QuizCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .black
+        backgroundColor = myColor.backgroundColor
         quizTitle.adjustsFontSizeToFitWidth = true
         quizTitle.numberOfLines = 1
         quizTitle.font = UIFont(name:"HelveticaNeue-Bold", size: 24.0)
@@ -31,8 +31,7 @@ class QuizCell: UITableViewCell {
         cellQuizDescription.font = UIFont(name:"HelveticaNeue", size: 14.0)
         
         cellView.layer.cornerRadius = 20
-        cellView.layer.borderWidth = 2
-        cellView.backgroundColor = .darkGray
+        cellView.backgroundColor = myColor.buttonColor1
         
         cellImage.layer.cornerRadius = 20
         cellImage.layer.masksToBounds = true

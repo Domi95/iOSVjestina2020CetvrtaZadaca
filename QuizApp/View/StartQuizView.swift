@@ -21,7 +21,7 @@ class StartQuizView: UIView {
     }
     
     private func render() {
-        self.backgroundColor = .darkGray
+        self.backgroundColor = myColor.buttonColor1
         setUpElements()
         configureConstraints()
     }
@@ -70,10 +70,9 @@ class StartQuizView: UIView {
         quizDescription.font = UIFont(name:"HelveticaNeue", size: 18.0)
         quizDescription.textColor = UIColor.white
         
-        startQuizButton.backgroundColor = .white
+        startQuizButton.backgroundColor = UIColor(red: CGFloat(255.0/255.0), green: CGFloat(255.0/255.0), blue: CGFloat(255.0/255.0), alpha: CGFloat(0.6))
         startQuizButton.setTitleColor(.black, for: .normal)
         startQuizButton.setTitle("Start Quiz", for: .normal)
-        startQuizButton.backgroundColor = .gray
         startQuizButton.layer.cornerRadius = 20
         
         quizImage.layer.cornerRadius = 20

@@ -23,12 +23,10 @@ class QuizzesMenuViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        //super.viewDidLoad()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         self.navigationController?.isNavigationBarHidden = true
         quizzesMenuView.tableView.dataSource = self
         quizzesMenuView.tableView.delegate = self
-        view.backgroundColor = .black
+        view.backgroundColor = myColor.backgroundColor
         render()
     }
     
@@ -111,25 +109,13 @@ class QuizzesMenuViewController: UIViewController {
         quizzesMenuView.getQuizButton.addTarget(self, action: #selector(getQuizPressed), for: .touchUpInside)
     }
     
-    func updateQuizImage(imageString: String) -> UIImage{
-        if let url = URL(string: imageString){
-            do {
-                let data = try Data(contentsOf: url)
-                return UIImage(data: data)!
-            } catch let err{
-                print("Error: \(err.localizedDescription)")
-            }
-        }
-        return UIImage()
-    }
-    
     func setUpQuizInformationView(){
         view.addSubview(quizzesMenuView)
         quizzesMenuView.translatesAutoresizingMaskIntoConstraints = false
         quizzesMenuView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        quizzesMenuView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        quizzesMenuView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        quizzesMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        quizzesMenuView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        quizzesMenuView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        quizzesMenuView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
 }
 // MARK:- TableView methods
@@ -152,15 +138,14 @@ extension QuizzesMenuViewController: UITableViewDataSource {
         switch section {
         case 0:
             sectionLabel.text = "Sports"
-            sectionLabel.textColor = .systemBlue
+            sectionLabel.textColor = myColor.tableViewLevelAndSectionTitleColor1
         case 1:
             sectionLabel.text = "Science"
-            sectionLabel.textColor = .brown
+            sectionLabel.textColor = myColor.tableViewLevelAndSectionTitleColor2
         default:
             sectionLabel.text = "WorldKnowledge"
         }
         
-        sectionLabel.backgroundColor = .black
         sectionLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         return sectionLabel
     }
@@ -175,14 +160,14 @@ extension QuizzesMenuViewController: UITableViewDataSource {
         cell.quizTitle.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].title
         cell.cellQuizDescription.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].description
         cell.cellImage?.contentMode = .scaleAspectFill
-        cell.cellImage.image = self.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
+        cell.cellImage.image = quizService.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
         cell.selectionStyle = .none
         
         var color: UIColor
         if indexPath.section == 0 {
-            color = .systemBlue
+            color = myColor.tableViewLevelAndSectionTitleColor1
         } else {
-            color = .brown
+            color = myColor.tableViewLevelAndSectionTitleColor2
         }
         switch quizzesByCategory[indexPath.section].quizzes[indexPath.row].level {
         case 1 :
@@ -207,7 +192,7 @@ extension QuizzesMenuViewController: UITableViewDelegate {
         let questionViewController = QuestionViewController()
         questionViewController.startQuizView.quizTitle.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].title
         questionViewController.startQuizView.quizDescription.text = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row].description
-        questionViewController.startQuizView.quizImage.image = self.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
+        questionViewController.startQuizView.quizImage.image = quizService.updateQuizImage(imageString: quizzesByCategory[indexPath.section].quizzes[indexPath.row].image)
         self.navigationController?.pushViewController(questionViewController, animated: true)
         questionViewController.quizz = self.quizzesByCategory[indexPath.section].quizzes[indexPath.row]
     }

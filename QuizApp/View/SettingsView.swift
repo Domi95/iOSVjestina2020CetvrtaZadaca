@@ -21,21 +21,22 @@ class SettingsView: UIView {
     }
     
     func render(){
+        self.backgroundColor = myColor.backgroundColor
         setUpElements()
         setUpConstraints()
     }
     
     func setUpElements(){
         addSubview(logoutButton)
-        logoutButton.setTitleColor(.white, for: .normal)
+        logoutButton.setTitleColor(.red, for: .normal)
         logoutButton.setTitle("Log out", for: .normal)
-        logoutButton.backgroundColor = .gray
+        logoutButton.backgroundColor = .white
         logoutButton.layer.cornerRadius = 20
-        logoutButton.layer.borderWidth = 1
+        logoutButton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
         
         addSubview(usernameLabel)
         usernameLabel.text = "USERNAME"
-        usernameLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 12.0)
+        usernameLabel.font = UIFont(name:"HelveticaNeue", size: 12.0)
         usernameLabel.textColor = UIColor.white
         
         addSubview(logedInUsernameLabel)
@@ -43,7 +44,6 @@ class SettingsView: UIView {
         logedInUsernameLabel.text = username
         logedInUsernameLabel.font = UIFont(name:"HelveticaNeue-Bold", size: 20.0)
         logedInUsernameLabel.textColor = UIColor.white
-
     }
     
     func setUpConstraints(){

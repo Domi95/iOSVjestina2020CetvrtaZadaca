@@ -24,7 +24,7 @@ class QuizzesMenuView: UIView {
     }
     
     private func render(){
-        self.backgroundColor = .black
+        self.backgroundColor = myColor.backgroundColor
         translatesAutoresizingMaskIntoConstraints  = false
         setUpQuizTitleLabel()
         setUpGetQuizButton()
@@ -69,11 +69,11 @@ class QuizzesMenuView: UIView {
     
     func configureTableView(){
         self.addSubview(tableView)
-        tableView.backgroundColor = .black
+        tableView.backgroundColor = myColor.backgroundColor
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = 143
         tableView.topAnchor.constraint(equalTo: self.funFactLabel.bottomAnchor, constant: 20).isActive = true
-        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 19).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         tableView.isHidden = true
@@ -81,7 +81,7 @@ class QuizzesMenuView: UIView {
     
     func setUpErrorLabel(){
         self.addSubview(errorLabel)
-        errorLabel.backgroundColor = .black
+        errorLabel.backgroundColor = myColor.backgroundColor
         errorLabel.adjustsFontSizeToFitWidth = true
         errorLabel.minimumScaleFactor = 0.5
         errorLabel.textAlignment = .center
@@ -93,7 +93,6 @@ class QuizzesMenuView: UIView {
     
     private func setUpFunFactLabel(){
         self.addSubview(funFactLabel)
-        funFactLabel.backgroundColor = .black
         funFactLabel.adjustsFontSizeToFitWidth = true
         funFactLabel.minimumScaleFactor = 0.5
         funFactLabel.textAlignment = .center
@@ -104,7 +103,6 @@ class QuizzesMenuView: UIView {
     
     private func setUpQuizTitleLabel() {
         self.addSubview(quizTitleLabel)
-        quizTitleLabel.backgroundColor = .black
         quizTitleLabel.adjustsFontSizeToFitWidth = true
         quizTitleLabel.minimumScaleFactor = 0.5
         quizTitleLabel.textAlignment = .center
@@ -116,16 +114,16 @@ class QuizzesMenuView: UIView {
     private func setUpGetQuizButton() {
         self.addSubview(getQuizButton)
         getQuizButton.backgroundColor = .white
-        getQuizButton.setTitleColor(.black, for: .normal)
+        getQuizButton.setTitleColor(.systemIndigo, for: .normal)
         getQuizButton.setTitle("Get Quiz", for: .normal)
-        getQuizButton.backgroundColor = .gray
+        getQuizButton.titleLabel?.font = UIFont.systemFont(ofSize: 16.0, weight: .bold)
         getQuizButton.layer.cornerRadius = 20
-        getQuizButton.layer.borderWidth = 1
+       
     }
     
     private func setUpFunFactTitle() {
         self.addSubview(funFactTitle)
-        funFactTitle.backgroundColor = .black
+        funFactTitle.backgroundColor = myColor.backgroundColor
         funFactTitle.adjustsFontSizeToFitWidth = true
         funFactTitle.minimumScaleFactor = 0.5
         funFactTitle.textAlignment = .center

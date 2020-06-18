@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 protocol QuizServiceDelegate {
     func didFailWithError(error: Error)
@@ -113,4 +114,16 @@ struct QuizService {
             task.resume()
         }
     }
+    
+    func updateQuizImage(imageString: String) -> UIImage{
+           if let url = URL(string: imageString){
+               do {
+                   let data = try Data(contentsOf: url)
+                   return UIImage(data: data)!
+               } catch let err{
+                   print("Error: \(err.localizedDescription)")
+               }
+           }
+           return UIImage()
+       }
 }
